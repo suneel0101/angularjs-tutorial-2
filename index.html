@@ -1,0 +1,19 @@
+<html ng-app>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="todo.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <body>
+      <!-- Adding the ng-app declaration to initialize AngularJS -->
+      <div>
+        <ul>
+          <li><a href ng-click="active='Yeah'">Yeah</a></li>
+          <li><a href ng-click="active='JesusH'">JesusH</a></li>
+          <li><a href ng-click="active='Saito'">Saito</a></li>
+        </ul>
+        <p ng-hide="active">Please click</p>
+        <p ng-show="active">Hello {{ active }}</p>
+      </div>
+    </body>
+  </head>
