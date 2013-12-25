@@ -2,11 +2,11 @@
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-    <script src="todo.js"></script>
+    <script src="app.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <body>
       <!-- Adding the ng-app declaration to initialize AngularJS -->
-      <div>
+      <div ng-controller="CoolCtrl" ng-click="toggleMode()">
         <ul>
           <li><a href ng-click="active='Yeah'">Yeah</a></li>
           <li><a href ng-click="active='JesusH'">JesusH</a></li>
@@ -14,6 +14,8 @@
         </ul>
         <p ng-hide="active">Please click</p>
         <p ng-show="active">Hello {{ active }}</p>
+        <p ng-hide="editing" ng-click="$event.stopPropagation(); toggleMode()" ng-init="someEditableText='edit me'">{{ someEditableText }}</p>
+        <input ng-click="$event.stopPropagation()" ng-show="editing" type="text" ng-model="someEditableText">
       </div>
     </body>
   </head>
