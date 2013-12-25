@@ -8,9 +8,9 @@
       <!-- Adding the ng-app declaration to initialize AngularJS -->
       <div ng-controller="CoolCtrl" ng-click="toggleMode()">
         <ul>
-          <li><a href ng-click="active='Yeah'">Yeah</a></li>
-          <li><a href ng-click="active='JesusH'">JesusH</a></li>
-          <li><a href ng-click="active='Saito'">Saito</a></li>
+          <li><a href ng-click="$event.stopPropagation();active='Yeah'">Yeah</a></li>
+          <li><a href ng-click="$event.stopPropagation();active='JesusH'">JesusH</a></li>
+          <li><a href ng-click="$event.stopPropagation();active='Saito'">Saito</a></li>
         </ul>
         <p ng-hide="active">Please click</p>
         <p ng-show="active">Hello {{ active }}</p>
