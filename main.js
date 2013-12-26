@@ -1,59 +1,21 @@
 var myApp = angular.module("Suneelius", []);
-
-myApp.directive("superhero", function (){
+myApp.directive("clock", function (){
     return {
         restrict: "E",
-        scope: {},
-        controller: function ($scope) {
-            $scope.abilities = [];
-            this.addStrength = function (){
-                $scope.abilities.push("strength");
-            };
-
-            this.addSpeed = function (){
-                $scope.abilities.push("speed");
-            };
-
-            this.addFlight = function (){
-                $scope.abilities.push("flight");
-            };
-
+        scope: {
+            timezone: "@"
         },
-        link: function(scope, element) {
-            element.addClass("btn-primary btn");
-            element.bind("mouseenter", function (){
-                alert(scope.abilities);
-            });
-        }
+        template: "<div class='well'> 12pm {{ timezone }}"
     };
 });
 
-
-myApp.directive("strength", function () {
+myApp.directive('panel', function (){
     return {
-        require: "superhero",
-        link: function(scope, element, attrs, superheroCtrl){
-            superheroCtrl.addStrength();
-        }
-    };
-});
-
-
-myApp.directive("speed", function () {
-    return {
-        require: "superhero",
-        link: function(scope, element, attrs, superheroCtrl){
-            superheroCtrl.addSpeed();
-        }
-    };
-});
-
-
-myApp.directive("flight", function () {
-    return {
-        require: "superhero",
-        link: function(scope, element, attrs, superheroCtrl){
-            superheroCtrl.addFlight();
-        }
+        restrict: "E",
+        transclude: true,
+        scope: {
+            title: "@"
+        },
+        template: "<div style='border: 3px solid #000000'><div class='well'>{{ title }}</div><div ng-transclude></div></div>"
     };
 });
