@@ -1,27 +1,59 @@
 var myApp = angular.module("Suneelius", []);
 
-myApp.controller("AppCtrl", function($scope) {
-    $scope.loadMoreTweets = function () {
-        alert("Loading tweets!");
-    };
-    $scope.deleteTweets = function () {
-        alert("deleting tweets!");
+myApp.directive("superhero", function (){
+    return {
+        restrict: "E",
+        scope: {},
+        controller: function ($scope) {
+            $scope.abilities = [];
+            this.addStrength = function (){
+                $scope.abilities.push("strength");
+            };
+
+            this.addSpeed = function (){
+                $scope.abilities.push("speed");
+            };
+
+            this.addFlight = function (){
+                $scope.abilities.push("flight");
+            };
+
+        },
+        link: function(scope, element) {
+            element.addClass("btn-primary btn");
+            element.bind("mouseenter", function (){
+                alert(scope.abilities);
+            });
+        }
     };
 });
 
 
-myApp.directive("enter", function (){
-    return function (scope, element, attrs){
-        element.bind("mouseenter", function () {
-            scope.$apply(attrs.enter);
-        });
+myApp.directive("strength", function () {
+    return {
+        require: "superhero",
+        link: function(scope, element, attrs, superheroCtrl){
+            superheroCtrl.addStrength();
+        }
     };
 });
 
-myApp.directive("leave", function (){
-    return function (scope, element, attrs){
-        element.bind("mouseleave", function () {
-            element.removeClass(attrs.enter);
-        });
+
+myApp.directive("speed", function () {
+    return {
+        require: "superhero",
+        link: function(scope, element, attrs, superheroCtrl){
+            superheroCtrl.addSpeed();
+        }
+    };
+});
+
+
+myApp.directive("flight", function () {
+    return {
+        require: "superhero",
+        link: function(scope, element, attrs, superheroCtrl){
+            superheroCtrl.addFlight();
+        }
     };
 });
