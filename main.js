@@ -1,16 +1,16 @@
 var myApp = angular.module("Suneelius", []);
 myApp.directive("enter", function (){
-    return function (scope, element){
+    return function (scope, element, attrs){
         element.bind("mouseenter", function () {
-            alert("I'm inside of this!");
+            element.addClass(attrs.enter);
         });
     };
 });
 
 myApp.directive("leave", function (){
-    return function (scope, element){
+    return function (scope, element, attrs){
         element.bind("mouseleave", function () {
-            alert("I'm leaving on a jetplane");
+            element.removeClass(attrs.enter);
         });
     };
 });
