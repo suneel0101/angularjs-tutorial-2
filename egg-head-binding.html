@@ -4,9 +4,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-    <body>
-      <div ng-app="Suneelius">
-        <div enter="well" leave>I'm content</div>
-      </div>
-    </body>
   </head>
+  <body>
+    <div ng-app="Suneelius">
+      <div ng-controller="AppCtrl">
+        <div enter="deleteTweets()">Load more tweets</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,8 +1,19 @@
 var myApp = angular.module("Suneelius", []);
+
+myApp.controller("AppCtrl", function($scope) {
+    $scope.loadMoreTweets = function () {
+        alert("Loading tweets!");
+    };
+    $scope.deleteTweets = function () {
+        alert("deleting tweets!");
+    };
+});
+
+
 myApp.directive("enter", function (){
     return function (scope, element, attrs){
         element.bind("mouseenter", function () {
-            element.addClass(attrs.enter);
+            scope.$apply(attrs.enter);
         });
     };
 });
