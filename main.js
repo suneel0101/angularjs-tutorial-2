@@ -1,21 +1,16 @@
 var myApp = angular.module("Suneelius", []);
-
-myApp.directive("superman", function () {
-    return {
-        // A for attr, C for class, E for element
-        restrict: "A",
-        link: function () {
-            alert("I'm awesomer!");
-        }
+myApp.directive("enter", function (){
+    return function (scope, element){
+        element.bind("mouseenter", function () {
+            alert("I'm inside of this!");
+        });
     };
 });
 
-myApp.directive("flash", function () {
-    return {
-        // A for attr, C for class, E for element
-        restrict: "A",
-        link: function () {
-            alert("I'm fast");
-        }
+myApp.directive("leave", function (){
+    return function (scope, element){
+        element.bind("mouseleave", function () {
+            alert("I'm leaving on a jetplane");
+        });
     };
 });
