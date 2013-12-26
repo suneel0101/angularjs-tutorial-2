@@ -1,21 +1,35 @@
 var myApp = angular.module("Suneelius", []);
-myApp.directive("clock", function (){
+
+myApp.directive("country", function (){
     return {
         restrict: "E",
-        scope: {
-            timezone: "@"
-        },
-        template: "<div class='well'> 12pm {{ timezone }}"
+        controller: function (){
+            this.makeAnnouncement = function(message) {
+                alert(message);
+          };
+        }
+    }
+});
+
+myApp.directive("state", function (){
+    return {
+        restrict: "E",
+        controller: function (){
+            this.makeLaw = function (law) {
+                alert("Law" + law);
+            };
+        }
     };
 });
 
-myApp.directive('panel', function (){
+
+myApp.directive("city", function (){
     return {
+        require:["^country", "^state"],
         restrict: "E",
-        transclude: true,
-        scope: {
-            title: "@"
-        },
-        template: "<div style='border: 3px solid #000000'><div class='well'>{{ title }}</div><div ng-transclude></div></div>"
+        link: function(scope, element, attrs, ctrls) {
+            ctrls[1].makeLaw("Jump higher");
+            ctrls[0].makeAnnouncement("We are the best!");
+        }
     };
 });
